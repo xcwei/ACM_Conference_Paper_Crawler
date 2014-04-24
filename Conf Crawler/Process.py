@@ -39,6 +39,7 @@ sqlcra = SQLConnCra.MysqlUti()
 
 Init(pr, sqlcra)
 arr_conf = sql.getConf(sys.argv[1])
+#arr_conf = sql.getConf("SIGIR")
 for item in arr_conf:
      confId = item[0]
      print(confId)
@@ -47,15 +48,14 @@ for item in arr_conf:
 
      for paperId in arr_paperId:
           print(paperId)
-          '''
+         
           try:
                pr.testPaper(paperId)
-               processPaper(paperId, pathname)
+               processPaper(paperId)
                sqlcra.updatePaper(paperId, 1)
           except:
                sqlcra.insertErr('Paper Err', paperId, cr.lastPath)
                sqlcra.updatePaper(paperId, -1)
-'''
-          pr.testPaper(paperId)
-          processPaper(paperId)
-          sqlcra.updatePaper(paperId, 1)
+
+
+
